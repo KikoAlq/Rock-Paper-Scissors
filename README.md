@@ -1,1 +1,1 @@
-# Rock-Paper-Scissors.git
+# Rock-Paper-Scissors
