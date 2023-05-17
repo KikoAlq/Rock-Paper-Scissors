@@ -1,16 +1,21 @@
-//Project Planning//
-// have player input a command word //
-// player input vs bot input //
-// display winner //
+const title = document.getElementById('titleBar');
+const button = document.getElementsByTagName('button');
+const userScore = document.getElementById('userScore');
+const computerScore = document.getElementById('computerScore');
+const h1 = document.querySelector('h1');
+const results = document.createElement('div');
+let botScore = 0;
+let playerScore = 0;
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     let choices = ["ROCK", "PAPER", "SCISSORS"];
     return choices[choice];
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
     let filter = playerSelection.toUpperCase();
-    let combo = filter + computerSelection;
+    let combo = filter + getComputerChoice();
     switch (combo) {
         case "PAPERROCK":
             return("You win, paper beats rock!");
@@ -29,40 +34,41 @@ function playRound(playerSelection, computerSelection) {
     };
 }
 
-function game() {
-    let games = 0
-    do {
-        let computerSelection = getComputerChoice();
-        let result = (playRound(playerSelection, computerSelection));
-        let winLoss = result[4];
-        switch (winLoss) {
-            case "w":
-                console.log("winner: player"); playerScore++;
-                break;
-            case "l":
-                console.log("winner: bot"); botScore++;
-                break;
-            default:
-                console.log("it'\s a tie");
-                break;
-        };
-        console.log("player " + playerScore)
-        console.log("bot " + botScore)
-        games++;
-    } while (games < 5);
-        
-    if (playerScore > botScore) {
-        console.log("You Win!")
-    } else if (botScore > playerScore) {
-        console.log("You Lose!")
-    } else {
-        console.log("TIE GAME")
-    };  
-    return("GAME OVER");
-};
+function reset() {
+    computerScore.textContent = "Bot " + botScore;
+    userScore.textContent = "Player " + playerScore;
+    botScore = botScore - botScore;
+    playerScore = playerScore - playerScore;
+}
 
-let botScore = 0;
-let playerScore = 0;
-const playerSelection = "pApEr"
-let computerSelection = getComputerChoice();
-console.log(game());
+for (let item of button){
+  item.addEventListener('click', () => {
+      const outcome = playRound(item.id);
+      h1.appendChild(results);
+      let winLoss = outcome[4];
+
+      switch (winLoss) {
+        case "w":
+          playerScore++;
+          break;
+        case "l":
+          botScore++;
+          break;
+      }
+
+      computerScore.textContent = "Bot " + botScore;
+      userScore.textContent = "Player " + playerScore;
+      
+      if (playerScore === 5) {
+        results.textContent = 'Winner: Player';
+        title.textContent = "GAME OVER";
+        reset();
+      } else if (botScore === 5) {
+        results.textContent = 'Winner: Bot';
+        title.textContent = "GAME OVER";
+        reset();
+      } else {
+        results.textContent = outcome;
+      }
+
+})};
