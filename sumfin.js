@@ -4,6 +4,7 @@ const userScore = document.getElementById('userScore');
 const computerScore = document.getElementById('computerScore');
 const h1 = document.querySelector('h1');
 const results = document.createElement('div');
+results.style.fontSize = "40px";
 let botScore = 0;
 let playerScore = 0;
 
@@ -39,6 +40,7 @@ function reset() {
     userScore.textContent = "Player " + playerScore;
     botScore = botScore - botScore;
     playerScore = playerScore - playerScore;
+    
 }
 
 for (let item of button){
@@ -69,6 +71,7 @@ for (let item of button){
         reset();
       } else {
         results.textContent = outcome;
+        title.textContent = "First to five wins!"
       }
 
 })};
