@@ -7,43 +7,52 @@ html {
     font-family: 'Among Us', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
 }
 
-button {
+#buttons, button {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: space-between;
+    flex-flow: column nowrap;
     background-color: transparent;
     border: none;
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 h1 {
+    width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-flow: nowrap row;
+    justify-content: stretch;
+    align-items: center;
+}
+
+h3, p {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 #titleBar {
-    font-size: 30px;
+    font-size: 50px;
     font-style: bold;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 h2 {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: end;
+    justify-content: space-around;
+    align-items: flex-end;
 }
 
-#rockimg, #paperimg, #scissorimg {
+#botimg, #playerimg, #rockimg, #paperimg, #scissorimg {
+    display: flex;
     max-width: 200%;
     height: auto;
     background-size: contain;
+}
+
+#computerScore {
+    order: 3;
 }

@@ -3,6 +3,7 @@ const button = document.getElementsByTagName('button');
 const userScore = document.getElementById('userScore');
 const computerScore = document.getElementById('computerScore');
 const h1 = document.querySelector('h1');
+const h2 = document.querySelector('h2');
 const results = document.createElement('div');
 results.style.fontSize = "40px";
 let botScore = 0;
@@ -19,25 +20,25 @@ function playRound(playerSelection) {
     let combo = filter + getComputerChoice();
     switch (combo) {
         case "PAPERROCK":
-            return("You win, paper beats rock!");
+            return("YOU WIN PAPER BEATS ROCK!");
         case "PAPERSCISSORS":
-            return("You lose, scissors beats paper!");
+            return("YOU LOSE, SCISSORS BEATS PAPER!");
         case "SCISSORSPAPER":
-            return("You win, scissors beats paper!");
+            return("YOU WIN SCISSORS BEATS PAPER!");
         case "SCISSORSROCK":
-            return("You lose, rock beats scissors!");
+            return("YOU LOSE, ROCK BEATS SCISSORS!");
         case "ROCKPAPER":
-            return("You lose, paper beats rock!");
+            return("YOU LOSE, PAPER BEATS ROCK!");
         case "ROCKSCISSORS":
-            return("You win, rock beats scissors!");
+            return("YOU WIN, ROCK BEATS SCISSORS!");
         default:
-            return("Tie game, you picked the same thing!");
+            return("TIE GAME!");
     };
 }
 
 function reset() {
-    computerScore.textContent = "Bot " + botScore;
-    userScore.textContent = "Player " + playerScore;
+    computerScore.textContent = "BOT " + botScore;
+    userScore.textContent = "PLAYER " + playerScore;
     botScore = botScore - botScore;
     playerScore = playerScore - playerScore;
     
@@ -46,32 +47,32 @@ function reset() {
 for (let item of button){
   item.addEventListener('click', () => {
       const outcome = playRound(item.id);
-      h1.appendChild(results);
+      h2.appendChild(results);
       let winLoss = outcome[4];
 
       switch (winLoss) {
-        case "w":
+        case "W":
           playerScore++;
           break;
-        case "l":
+        case "L":
           botScore++;
           break;
       }
 
-      computerScore.textContent = "Bot " + botScore;
-      userScore.textContent = "Player " + playerScore;
+      computerScore.textContent = "BOT " + botScore;
+      userScore.textContent = "PLAYER " + playerScore;
       
       if (playerScore === 5) {
-        results.textContent = 'Winner: Player';
+        results.textContent = 'WINNER: PLAYER';
         title.textContent = "GAME OVER";
         reset();
       } else if (botScore === 5) {
-        results.textContent = 'Winner: Bot';
+        results.textContent = 'WINNER: BOT';
         title.textContent = "GAME OVER";
         reset();
       } else {
         results.textContent = outcome;
-        title.textContent = "First to five wins!"
+        title.textContent = "ROCK PAPER SUSSORS"
       }
 
 })};
