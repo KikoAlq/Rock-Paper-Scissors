@@ -3,7 +3,7 @@ body {
 }
 
 html {
-    font-size: 30px;
+    font-size: 1vw;
     font-family: 'Among Us', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
 }
 
@@ -17,10 +17,10 @@ html {
 }
 
 h1 {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-flow: nowrap row;
-    justify-content: stretch;
+    justify-content: center;
     align-items: center;
 }
 
@@ -32,7 +32,7 @@ h3, p {
 }
 
 #titleBar {
-    font-size: 50px;
+    font-size: 3vw;
     font-style: bold;
     display: flex;
     justify-content: center;
@@ -46,9 +46,16 @@ h2 {
     align-items: flex-end;
 }
 
-#botimg, #playerimg, #rockimg, #paperimg, #scissorimg {
+#rockimg, #paperimg, #scissorimg {
     display: flex;
-    max-width: 200%;
+    max-width: 40%;
+    height: auto;
+    background-size: contain;
+}
+
+#botimg, #playerimg {
+    display: flex;
+    max-width: 30%;
     height: auto;
     background-size: contain;
 }

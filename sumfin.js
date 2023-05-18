@@ -5,7 +5,7 @@ const computerScore = document.getElementById('computerScore');
 const h1 = document.querySelector('h1');
 const h2 = document.querySelector('h2');
 const results = document.createElement('div');
-results.style.fontSize = "40px";
+results.style.fontSize = "2vw";
 let botScore = 0;
 let playerScore = 0;
 
